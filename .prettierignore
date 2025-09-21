@@ -1,0 +1,7 @@
+build
+node_modules
+ci
+docs
+dist
+script
+assets
