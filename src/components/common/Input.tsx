@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
-import Colors from "../../styles/Colors";
+import colors from "../../styles/theme/colors";
 import InputWrapper from "./InputWrapper";
 
 interface InputProps {
@@ -26,26 +26,26 @@ const StyledInput = styled.input<{ disabled?: boolean }>`
   width: 100%;
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  border: 1px solid ${Colors.lightGray};
+  border: 1px solid ${colors.lightGray};
   box-sizing: border-box;
 
   &:focus,
   &:active,
   &:focus-visible {
-    outline: 1px solid ${Colors.gray};
+    outline: 1px solid ${colors.gray};
   }
 
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${Colors.lightGray};
+      background-color: ${colors.lightGray};
       cursor: not-allowed;
     `}
 `;
 
 const ErrorText = styled.p`
   margin-bottom: 0;
-  color: ${Colors.danger};
+  color: ${colors.danger};
 `;
 
 const Input = ({

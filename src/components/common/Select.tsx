@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
 import styled from "styled-components";
 import { SelectOptionsType } from "../../types/select";
-import Colors from "../../styles/Colors";
+import colors from "../../styles/theme/colors";
 
 interface SelectProps {
   id: string;
@@ -27,7 +27,7 @@ const Label = styled.label`
 const ValueBox = styled.div<{ disabled?: boolean }>`
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  border: 1px solid ${Colors.lightGray};
+  border: 1px solid ${colors.lightGray};
   width: 100%;
   cursor: pointer;
   box-sizing: border-box;
@@ -35,14 +35,14 @@ const ValueBox = styled.div<{ disabled?: boolean }>`
   &:focus,
   &:active,
   &:focus-visible {
-    outline: 1px solid ${Colors.gray};
+    outline: 1px solid ${colors.gray};
   }
 
   ${(props) =>
     props.disabled &&
     `
       cursor: not-allowed;
-      background-color: ${Colors.lightGray};
+      background-color: ${colors.lightGray};
     `}
 `;
 
@@ -54,11 +54,11 @@ const ListBox = styled.ul<{ disabled?: boolean }>`
   padding: 0 0 0.4rem 0;
   width: 100%;
   border-radius: 5px;
-  border: 1px solid ${Colors.lightGray};
+  border: 1px solid ${colors.lightGray};
   position: absolute;
   left: 0;
   top: 100%;
-  background: ${Colors.white};
+  background: ${colors.white};
   z-index: 10;
 
   ${(props) =>
@@ -74,16 +74,16 @@ const ListItem = styled.li<{ selected?: boolean }>`
   cursor: pointer;
 
   &:hover {
-    background: ${Colors.lightGray};
+    background: ${colors.lightGray};
   }
 
   ${(props) =>
     props.selected &&
     `
-      background: ${Colors.lightGray};
+      background: ${colors.lightGray};
 
       &:hover {
-        background: ${Colors.gray};
+        background: ${colors.gray};
       }
     `}
 `;

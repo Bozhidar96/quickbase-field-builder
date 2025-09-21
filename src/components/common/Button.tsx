@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { ReactNode } from "react";
-import Colors from "../../styles/Colors";
+import colors from "../../styles/theme/colors";
 
 export const ButtonEnums = {
   type: {
@@ -36,12 +36,12 @@ const StyledButton = styled.button<ButtonProps>`
   ${(props) =>
     props.type === "primary" &&
     css`
-      background-color: ${Colors.green};
-      color: ${Colors.white};
-      border-color: ${Colors.green};
+      background-color: ${colors.green};
+      color: ${colors.white};
+      border-color: ${colors.green};
       &:hover {
-        background-color: ${Colors.greenLight};
-        color: ${Colors.black};
+        background-color: ${colors.greenLight};
+        color: ${colors.black};
       }
     `}
 
@@ -69,13 +69,13 @@ const StyledButton = styled.button<ButtonProps>`
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${Colors.lightGray};
-      color: ${Colors.gray};
-      border: 1px solid ${Colors.gray};
+      background-color: ${colors.lightGray};
+      color: ${colors.gray};
+      border: 1px solid ${colors.gray};
       cursor: not-allowed;
       &:hover {
-        background-color: ${Colors.lightGray};
-        color: ${Colors.gray};
+        background-color: ${colors.lightGray};
+        color: ${colors.gray};
       }
     `}
 `;
@@ -88,7 +88,7 @@ const Button = ({
   type,
   variant,
   title,
-  color
+  color,
 }: ButtonProps) => {
   return (
     <StyledButton

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 
 import InputWrapper from "./InputWrapper";
-import Colors from "../../styles/Colors";
+import colors from "../../styles/theme/colors";
 
 interface Props {
   id: string;
@@ -17,7 +17,6 @@ interface Props {
   error?: string;
 }
 
-// styled components
 const Label = styled.label`
   margin-right: 1rem;
 `;
@@ -33,7 +32,7 @@ const Container = styled.div<{ customStyles?: string }>`
 const StyledTextArea = styled.textarea<{ disabled?: boolean }>`
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  border: 1px solid ${Colors.lightGray};
+  border: 1px solid ${colors.lightGray};
   height: 8rem;
   resize: none;
   width: 100%;
@@ -42,20 +41,20 @@ const StyledTextArea = styled.textarea<{ disabled?: boolean }>`
   &:focus,
   &:active,
   &:focus-visible {
-    outline: 1px solid ${Colors.gray};
+    outline: 1px solid ${colors.gray};
   }
 
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${Colors.lightGray};
+      background-color: ${colors.lightGray};
       cursor: not-allowed;
     `}
 `;
 
 const ErrorText = styled.p`
   margin-bottom: 0;
-  color: ${Colors.danger};
+  color: ${colors.danger};
 `;
 
 const TextArea = ({

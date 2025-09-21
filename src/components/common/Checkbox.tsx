@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
-import Colors from "../../styles/Colors";
+import colors from "../../styles/theme/colors";
 
 interface CheckboxProps {
   id?: string;
@@ -27,8 +27,8 @@ const Label = styled.label`
 
 const Input = styled.input<{ disabled?: boolean }>`
   appearance: none;
-  background: ${Colors.white};
-  border: 1px solid ${Colors.gray};
+  background: ${colors.white};
+  border: 1px solid ${colors.gray};
   border-radius: 5px;
   cursor: pointer;
   width: 1.5rem;
@@ -46,7 +46,7 @@ const Input = styled.input<{ disabled?: boolean }>`
     width: 1.25rem;
     height: 1.25rem;
     border-radius: 0.125rem;
-    background-color: ${Colors.lightGray};
+    background-color: ${colors.lightGray};
     opacity: 0;
     pointer-events: none;
   }
@@ -59,7 +59,7 @@ const Input = styled.input<{ disabled?: boolean }>`
     transform: translate(-50%, -50%) rotate(-45deg);
     width: 0.75rem;
     height: 0.3125rem;
-    border: 0.1875rem solid ${Colors.green};
+    border: 0.1875rem solid ${colors.green};
     border-right: 0;
     border-top: 0;
     opacity: 0;
@@ -70,7 +70,7 @@ const Input = styled.input<{ disabled?: boolean }>`
   }
 
   &:checked {
-    border-color: ${Colors.greenLight};
+    border-color: ${colors.greenLight};
 
     &:after {
       opacity: 1;

@@ -8,7 +8,7 @@ import InputText from "../components/common/Input";
 import TextArea from "../components/common/TextArea";
 import Select from "../components/common/Select";
 
-import Colors from "../styles/Colors";
+import colors from "../styles/theme/colors";
 import { FormRow, FormState } from "../types/form";
 import { SelectOptionsType } from "../types/select";
 import fieldService from "../service/formService";
@@ -54,7 +54,7 @@ const ButtonSeparator = styled.span`
 `;
 
 const CancelButton = styled(Button)`
-  color: ${Colors.danger};
+  color: ${colors.danger};
 `;
 
 const initialValidation = {
@@ -153,7 +153,10 @@ const Form = ({ data, storageKey, sortOptions }: Props): JSX.Element => {
 
     if (row.type === textarea) {
       const handleTextAreaChange = (value: string) => {
-        setFormData({ ...formData, [choicesListbox]: value.split(/\r?\n/) });
+        const choices = value
+          .split(/\r?\n/)
+          .filter((line) => line.trim() !== "");
+        setFormData({ ...formData, [choicesListbox]: choices });
       };
 
       control = (
