@@ -1,10 +1,9 @@
-import FieldBuilder from "./components/FieldBuilder";
-import { FieldConfig } from "./types";
+import Form from "./modules/Form";
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <span>Bozhidar Here</span>
+    <div>
+      <Form title="Bozhidar title"></Form>
     </div>
   );
 }
