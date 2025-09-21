@@ -1,27 +1,28 @@
-import styled, { css } from 'styled-components'
-import { ReactNode } from 'react'
-import Colors from '../../styles/Colors'
+import styled, { css } from "styled-components";
+import { ReactNode } from "react";
+import Colors from "../../styles/Colors";
 
 export const ButtonEnums = {
   type: {
-    primary: 'primary',
-    secondary: 'secondary'
+    primary: "primary",
+    secondary: "secondary",
   },
   variant: {
-    default: 'default',
-    outlined: 'outlined',
-    text: 'text'
-  }
-} as const
+    default: "default",
+    outlined: "outlined",
+    text: "text",
+  },
+} as const;
 
 interface ButtonProps {
-  id?: string
-  children?: ReactNode
-  onClick?: () => void
-  disabled?: boolean
-  type?: keyof typeof ButtonEnums.type
-  variant?: keyof typeof ButtonEnums.variant
-  title?: string
+  id?: string;
+  children?: ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+  type?: keyof typeof ButtonEnums.type;
+  variant?: keyof typeof ButtonEnums.variant;
+  title?: string;
+  color?: string;
 }
 
 const StyledButton = styled.button<ButtonProps>`
@@ -33,7 +34,7 @@ const StyledButton = styled.button<ButtonProps>`
   border: 1px solid;
 
   ${(props) =>
-    props.type === 'primary' &&
+    props.type === "primary" &&
     css`
       background-color: ${Colors.green};
       color: ${Colors.white};
@@ -45,13 +46,19 @@ const StyledButton = styled.button<ButtonProps>`
     `}
 
   ${(props) =>
-    props.variant === 'outlined' &&
+    props.color &&
+    css`
+      color: ${props.color};
+    `}
+
+  ${(props) =>
+    props.variant === "outlined" &&
     css`
       background: none;
       border: 1px solid;
     `}
   ${(props) =>
-    props.variant === 'text' &&
+    props.variant === "text" &&
     css`
       background: none;
       border: none;
@@ -71,9 +78,18 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${Colors.gray};
       }
     `}
-`
+`;
 
-const Button = ({ id, children, onClick, disabled, type, variant, title }: ButtonProps) => {
+const Button = ({
+  id,
+  children,
+  onClick,
+  disabled,
+  type,
+  variant,
+  title,
+  color
+}: ButtonProps) => {
   return (
     <StyledButton
       id={id}
@@ -82,10 +98,11 @@ const Button = ({ id, children, onClick, disabled, type, variant, title }: Butto
       type={type}
       variant={variant}
       title={title}
+      color={color}
     >
       {children}
     </StyledButton>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
