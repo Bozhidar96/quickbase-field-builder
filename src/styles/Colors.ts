@@ -1,17 +1,14 @@
 const Colors = {
-  // Primary palette
   builderBlue: '#084D97',
   builderBlueLight: '#8CAED3',
   builderBlueDark: '#063a6a',
 
-  // Neutral grays
   gray: '#6c757d',
   grayLight: '#dee2e6',
   grayDark: '#495057',
   lightGray: '#f8f9fa',
   darkGray: '#343a40',
 
-  // Semantic colors
   green: '#48B482',
   greenLight: '#B8E6B8',
   greenDark: '#2c8c57',
@@ -28,11 +25,9 @@ const Colors = {
   infoLight: '#71d1e1',
   infoDark: '#0f6670',
 
-  // Base colors
   white: '#ffffff',
   black: '#000000',
 
-  // Extra shades for UI
   background: '#f1f3f5',
   cardBackground: '#ffffff',
   border: '#ced4da',
