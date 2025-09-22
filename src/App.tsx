@@ -5,7 +5,21 @@ import { FormState } from "./types/form";
 import fieldService from "./service/formService";
 
 import Form from "./modules/Form";
+import Header from "./components/common/Header";
+
 import { getLocalStorage } from "./utils/persistence";
+import styled from "styled-components";
+
+const AppContainer = styled.div`
+  min-height: 100vh;
+  background-color: #f8f9fa;
+`;
+
+const MainContent = styled.main`
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+`;
 
 const { fieldType, fieldLabel, defaultValue, choicesListbox, sortSelect } =
   formIds;
@@ -52,13 +66,18 @@ const App = (): JSX.Element => {
   }, []);
 
   return (
-    <div>
-      <Form
-        data={formData}
-        storageKey={storageKeyValue}
-        sortOptions={sortOptions}
+    <AppContainer>
+      <Header
+        logoSrc='/logo.png'
       />
-    </div>
+      <MainContent>
+        <Form 
+          data={formData} 
+          storageKey={storageKeys.fieldTypeForm} 
+          sortOptions={sortOptions} 
+        />
+      </MainContent>
+    </AppContainer>
   );
 };
 
