@@ -1,27 +1,51 @@
 import axios from 'axios'
 
 const API = {
-    save: 'https://bozhidar-form-builder.free.beeceptor.com/api/save-field'
+    save: 'https://bozhidar-form-builder.free.beeceptor.com/api/save-field',
+    get: 'https://bozhidar-form-builder.free.beeceptor.com/api/get-field'
+}
+
+interface FieldApiResponse {
+    label: string
+    required: boolean
+    choices: string[]
+    displayAlpha: boolean
+    default: string
 }
 
 const fieldService = {
-    getField: function (id: string) {
-        return {
-            label: 'Sales region',
-            required: false,
-            choices: [
-                'Asia',
-                'Australia',
-                'Western Europe',
-                'North America',
-                'Eastern Europe',
-                'Latin America',
-                'Middle East and Africa'
-            ],
-            displayAlpha: true,
-            default: 'North America'
+    getField: async function (id: string): Promise<FieldApiResponse | null> {
+        try {
+            const response = await axios.get<FieldApiResponse>(`${API.get}/${id}`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                timeout: 10000 
+            })
+            console.log('response', response)
+            return response.data
+        } catch (error) {
+            console.error('Error getting the fields:', error)
+
+            // fallback fields
+            return {
+                label: 'Sales region',
+                required: false,
+                choices: [
+                    'Asia',
+                    'Australia',
+                    'Western Europe',
+                    'North America',
+                    'Eastern Europe',
+                    'Latin America',
+                    'Middle East and Africa'
+                ],
+                displayAlpha: true,
+                default: 'North America'
+            }
         }
     },
+
     saveField: async function (formData: object) {
         try {
             console.log('Sending field data to Beeceptor:', formData)

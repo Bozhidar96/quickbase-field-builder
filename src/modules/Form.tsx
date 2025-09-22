@@ -194,13 +194,11 @@ const Form = ({ data, storageKey, sortOptions }: Props): JSX.Element => {
                 const choices = formData[choicesListbox].filter(Boolean)
                 const defaultValues = formData[defaultValue]
 
-                const needsDefaultValues = defaultValues && defaultValues.trim() !== ''
-                   && !choices.includes(defaultValues);
+                const needsDefaultValues =
+                    defaultValues && defaultValues.trim() !== '' && !choices.includes(defaultValues)
                 const saveData = {
                     ...formData,
-                    [choicesListbox]: needsDefaultValues 
-                    ? [...choices, defaultValues] 
-                    : choices
+                    [choicesListbox]: needsDefaultValues ? [...choices, defaultValues] : choices
                 }
 
                 const response = await fieldService.saveField(saveData)
