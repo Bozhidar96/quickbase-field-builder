@@ -6,7 +6,6 @@ const API = {
 
 const fieldService = {
     getField: function (id: string) {
-        console.log(id)
         return {
             label: 'Sales region',
             required: false,
@@ -23,11 +22,12 @@ const fieldService = {
             default: 'North America'
         }
     },
-    saveField: async function (fieldJson: object) {
+    saveField: async function (formData: object) {
         try {
-            console.log('Sending field data to Beeceptor:', fieldJson)
+            console.log('Sending field data to Beeceptor:', formData)
+            console.log('Payload:', JSON.stringify(formData, null, 2))
 
-            const response = await axios.post(API.save, fieldJson, {
+            const response = await axios.post(API.save, formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -37,7 +37,7 @@ const fieldService = {
             console.log('Beeceptor response:', response.data)
             return response.data
         } catch (error) {
-            console.error('Error saving field to Beeceptor:', error)
+            console.error('Error saving the fields:', error)
             throw error
         }
     }
