@@ -18,3 +18,15 @@ export const storageKeys = {
   fieldTypeForm: "fieldTypeForm",
 } as const;
 
+export const buttonOptions = {
+  type: {
+    primary: "primary",
+    secondary: "secondary",
+  },
+  variant: {
+    default: "default",
+    outlined: "outlined",
+    text: "text",
+  },
+} as const;
+

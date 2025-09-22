@@ -4,30 +4,38 @@ import colors from "../../styles/theme/colors";
 
 import InputWrapper from "./InputWrapper";
 
-interface InputProps {
-  id?: string;
+interface Props {
+  id: string;
   name?: string;
+  noWrap?: boolean;
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
   disabled?: boolean;
+  customStyles?: string;
   label?: ReactNode;
-  noWrap?: boolean;
   error?: string;
 }
+
 const Label = styled.label`
   margin-right: 1rem;
 `;
 
-const InputContainer = styled.div`
-  width: 100%;
+const Container = styled.div<{ customStyles?: string }>`
+  ${(props) =>
+    props.customStyles &&
+    css`
+      ${props.customStyles}
+    `}
 `;
 
-const StyledInput = styled.input<{ disabled?: boolean }>`
-  width: 100%;
+const StyledTextArea = styled.textarea<{ disabled?: boolean }>`
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
   border: 1px solid ${colors.gray};
+  height: 8rem;
+  resize: none;
+  width: 100%;
   box-sizing: border-box;
 
   &:focus,
@@ -40,7 +48,6 @@ const StyledInput = styled.input<{ disabled?: boolean }>`
     props.disabled &&
     css`
       background-color: ${colors.gray};
-      cursor: not-allowed;
     `}
 `;
 
@@ -49,38 +56,38 @@ const ErrorText = styled.p`
   color: ${colors.danger};
 `;
 
-const Input = ({
+const TextArea = ({
   id,
   name,
   value,
   onChange,
   placeholder,
   disabled,
+  customStyles,
   label,
   noWrap,
   error,
-}: InputProps): JSX.Element => {
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+}: Props): JSX.Element => {
+  const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange?.(event.target.value);
   };
 
   return (
     <InputWrapper noWrap={noWrap}>
       {label && <Label htmlFor={id}>{label}</Label>}
-      <InputContainer>
-        <StyledInput
+      <Container customStyles={customStyles}>
+        <StyledTextArea
           id={id}
           name={name}
-          type="text"
           value={value}
           onChange={disabled ? undefined : handleOnChange}
           placeholder={placeholder}
           disabled={disabled}
         />
         {error && <ErrorText>{error}</ErrorText>}
-      </InputContainer>
+      </Container>
     </InputWrapper>
   );
 };
 
-export default Input;
+export default TextArea;
