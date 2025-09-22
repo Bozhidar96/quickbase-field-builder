@@ -1,20 +1,20 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import ComponentWrapper from "../components/builder/ComponentWrapper";
-import Button, { ButtonEnums } from "../components/common/Button";
-import Checkbox from "../components/common/Checkbox";
-import InputText from "../components/common/Input";
-import TextArea from "../components/common/TextArea";
-import Select from "../components/common/Select";
-
 import colors from "../styles/theme/colors";
 import { FormRow, FormState } from "../types/form";
 import { SelectOptionsType } from "../types/select";
 import fieldService from "../service/formService";
-import { formIds, rowTypes } from "../consts/constants";
+import { buttonOptions, formIds, rowTypes } from "../consts/constants";
 import { validateChoices, validateLabelField } from "../utils/validator";
 import { removeLocalStorage, setLocalStorage } from "../utils/persistence";
+
+import ComponentWrapper from "../components/builder/ComponentWrapper";
+import Button from "../components/common/Button";
+import Checkbox from "../components/common/Checkbox";
+import InputText from "../components/common/Input";
+import TextArea from "../components/common/TextArea";
+import Select from "../components/common/Select";
 
 const { text, checkbox, select, textarea } = rowTypes;
 const { fieldType, fieldLabel, defaultValue, choicesListbox, sortSelect } =
@@ -23,7 +23,6 @@ const { fieldType, fieldLabel, defaultValue, choicesListbox, sortSelect } =
 const FormContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
-  max-width: 45rem;
 `;
 
 const Label = styled.label`
@@ -76,25 +75,33 @@ const Form = ({ data, storageKey, sortOptions }: Props): JSX.Element => {
 
   const formRows: FormRow[] = [
     {
+      id: fieldLabel,
       rowLabel: "Label",
       type: text,
-      id: fieldLabel,
       placeholder: "Field Label",
     },
     {
+      id: fieldType,
       rowLabel: "Type",
       type: checkbox,
-      id: fieldType,
       label: "A value is required",
     },
     {
+      id: defaultValue,
       rowLabel: "Default Value",
       type: text,
-      id: defaultValue,
       placeholder: "Default value",
     },
-    { rowLabel: "Choices", type: textarea, id: choicesListbox },
-    { rowLabel: "Order", type: select, id: sortSelect },
+    { 
+        id: choicesListbox,
+        rowLabel: "Choices",
+        type: textarea
+    },
+    { 
+        id: sortSelect,
+        rowLabel: "Order",
+        type: select
+    },
   ];
 
   useEffect(() => {
@@ -213,14 +220,14 @@ const Form = ({ data, storageKey, sortOptions }: Props): JSX.Element => {
         <ButtonWrapper>
           <Button
             disabled={formHasErrors}
-            type={ButtonEnums.type.primary}
+            type={buttonOptions.type.primary}
             onClick={handleSave}
           >
             Save Changes
           </Button>
           <ButtonSeparator>or</ButtonSeparator>
           <CancelButton
-            variant={ButtonEnums.variant.text}
+            variant={buttonOptions.variant.text}
             onClick={handleCancel}
           >
             Cancel

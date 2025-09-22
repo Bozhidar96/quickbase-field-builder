@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { ReactNode } from "react";
+import styled from "styled-components";
 import colors from "../../styles/theme/colors";
 
 interface Props {
@@ -13,14 +13,14 @@ const Wrapper = styled.div`
   border: 2px solid ${colors.builderBlueLight};
   border-radius: 5px;
   margin: 1rem;
-  max-width: 50rem;
 `;
 
 const WrapperTitle = styled.h3`
+  color: ${colors.builderBlue};
   padding: 1rem;
   border-bottom: 2px solid ${colors.builderBlueLight};
   background: ${colors.builderBlueLight};
-  color: ${colors.builderBlue};
+  margin: 0px;
 `;
 
 const WrapperContent = styled.div`

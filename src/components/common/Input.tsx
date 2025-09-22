@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import colors from "../../styles/theme/colors";
+
 import InputWrapper from "./InputWrapper";
 
 interface InputProps {
@@ -26,7 +27,7 @@ const StyledInput = styled.input<{ disabled?: boolean }>`
   width: 100%;
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  border: 1px solid ${colors.lightGray};
+  border: 1px solid ${colors.gray};
   box-sizing: border-box;
 
   &:focus,
@@ -38,7 +39,7 @@ const StyledInput = styled.input<{ disabled?: boolean }>`
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${colors.lightGray};
+      background-color: ${colors.gray};
       cursor: not-allowed;
     `}
 `;

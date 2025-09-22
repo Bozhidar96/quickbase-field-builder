@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
+import colors from "../../styles/theme/colors";
 
 import InputWrapper from "./InputWrapper";
-import colors from "../../styles/theme/colors";
 
 interface Props {
   id: string;
@@ -32,7 +32,7 @@ const Container = styled.div<{ customStyles?: string }>`
 const StyledTextArea = styled.textarea<{ disabled?: boolean }>`
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  border: 1px solid ${colors.lightGray};
+  border: 1px solid ${colors.gray};
   height: 8rem;
   resize: none;
   width: 100%;
@@ -47,8 +47,7 @@ const StyledTextArea = styled.textarea<{ disabled?: boolean }>`
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${colors.lightGray};
-      cursor: not-allowed;
+      background-color: ${colors.gray};
     `}
 `;
 

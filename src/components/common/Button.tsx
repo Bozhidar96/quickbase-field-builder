@@ -1,26 +1,15 @@
-import styled, { css } from "styled-components";
 import { ReactNode } from "react";
+import styled, { css } from "styled-components";
 import colors from "../../styles/theme/colors";
-
-export const ButtonEnums = {
-  type: {
-    primary: "primary",
-    secondary: "secondary",
-  },
-  variant: {
-    default: "default",
-    outlined: "outlined",
-    text: "text",
-  },
-} as const;
+import { buttonOptions } from "../../consts/constants";
 
 interface ButtonProps {
   id?: string;
   children?: ReactNode;
   onClick?: () => void;
   disabled?: boolean;
-  type?: keyof typeof ButtonEnums.type;
-  variant?: keyof typeof ButtonEnums.variant;
+  type?: keyof typeof buttonOptions.type;
+  variant?: keyof typeof buttonOptions.variant;
   title?: string;
   color?: string;
 }
@@ -28,20 +17,19 @@ interface ButtonProps {
 const StyledButton = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  cursor: pointer;
   border: 1px solid;
 
   ${(props) =>
     props.type === "primary" &&
     css`
-      background-color: ${colors.green};
       color: ${colors.white};
+      background-color: ${colors.green};
       border-color: ${colors.green};
       &:hover {
-        background-color: ${colors.greenLight};
         color: ${colors.black};
+        background-color: ${colors.greenLight};
       }
     `}
 
@@ -69,13 +57,12 @@ const StyledButton = styled.button<ButtonProps>`
   ${(props) =>
     props.disabled &&
     css`
-      background-color: ${colors.lightGray};
       color: ${colors.gray};
+      background-color: ${colors.gray};
       border: 1px solid ${colors.gray};
-      cursor: not-allowed;
       &:hover {
-        background-color: ${colors.lightGray};
         color: ${colors.gray};
+        background-color: ${colors.gray};
       }
     `}
 `;

@@ -1,6 +1,4 @@
 /**
- * Utility functions for interacting with the browser's localStorage API..
- * 
  * Note: localStorage is synchronous and limited in size (~5MB). 
  * It is not recommended for storing sensitive data.
  */

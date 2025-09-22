@@ -1,7 +1,6 @@
 import { rowTypes, formIds } from '../consts/constants'
 import { SelectOptionsType } from './select'
 
-
 const { text, checkbox, select, listbox, textarea } = rowTypes
 const { fieldType, fieldLabel, defaultValue, choicesListbox, sortSelect } = formIds
 
